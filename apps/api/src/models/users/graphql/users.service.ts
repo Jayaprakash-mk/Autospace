@@ -1,10 +1,19 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common'
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common'
 import { FindManyUserArgs, FindUniqueUserArgs } from './dtos/find.args'
 import { PrismaService } from 'src/common/prisma/prisma.service'
-import { LoginInput, LoginOutput, RegisterWithCredentialsInput, RegisterWithProvidedInput } from './dtos/create-user.input'
+import {
+  LoginInput,
+  LoginOutput,
+  RegisterWithCredentialsInput,
+  RegisterWithProvidedInput,
+} from './dtos/create-user.input'
 import { UpdateUserInput } from './dtos/update-user.input'
 import * as bcrypt from 'bcryptjs'
-import {v4 as uuid} from 'uuid'
+import { v4 as uuid } from 'uuid'
 import { JwtService } from '@nestjs/jwt'
 
 @Injectable()
@@ -13,21 +22,18 @@ export class UsersService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
   ) {}
-  registerWithProvider({
-    image,
-    name,
-    uid,
-    type,
-  } : RegisterWithProvidedInput){
+  registerWithProvider({ image, name, uid, type }: RegisterWithProvidedInput) {
     return this.prisma.user.create({
       data: {
-        uid,name,image,
+        uid,
+        name,
+        image,
         AuthProvider: {
           create: {
-            type
-          }
-        }
-      }
+            type,
+          },
+        },
+      },
     })
   }
 
@@ -36,41 +42,41 @@ export class UsersService {
     name,
     password,
     image,
-    
-    
-  } : RegisterWithCredentialsInput){
+  }: RegisterWithCredentialsInput) {
     const existingUser = await this.prisma.credentials.findUnique({
       where: {
         email,
-      }
+      },
     })
 
-    if(existingUser){
+    if (existingUser) {
       throw new BadRequestException('User Already exists with this email')
     }
 
     const salt = bcrypt.genSaltSync()
-    const passwordHash = bcrypt.hashSync(password,salt)
+    const passwordHash = bcrypt.hashSync(password, salt)
     const uid = uuid()
 
     return this.prisma.user.create({
       data: {
-        uid,name,image,
+        uid,
+        name,
+        image,
         Credentials: {
           create: {
             email,
             passwordHash,
-          }
+          },
         },
         AuthProvider: {
-          create:{
-            type: "CREDENTIALS",
-          }
+          create: {
+            type: 'CREDENTIALS',
+          },
         },
       },
       include: {
         Credentials: true,
-      }
+      },
     })
   }
 
@@ -105,7 +111,6 @@ export class UsersService {
     )
     return { token: jwtToken }
   }
-
 
   findAll(args: FindManyUserArgs) {
     return this.prisma.user.findMany(args)
