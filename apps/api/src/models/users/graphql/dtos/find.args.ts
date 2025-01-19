@@ -16,7 +16,9 @@ class FindManyUserArgsStrict
       Omit<Prisma.UserFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  where: UserWhereInput
+  @Field(() => UserWhereInput, { nullable: true })
+  where: Prisma.UserWhereInput
+
   orderBy: UserOrderByWithRelationInput[]
   cursor: UserWhereUniqueInput
   take: number
