@@ -49,8 +49,8 @@ export class AdminsController {
   }
 
   @ApiOkResponse({ type: AdminEntity })
-  @Get(':id')
-  findOne(@Param('id') uid: string) {
+  @Get(':uid')
+  findOne(@Param('uid') uid: string) {
     return this.prisma.admin.findUnique({ where: { uid } })
   }
 
@@ -73,8 +73,8 @@ export class AdminsController {
 
   @ApiBearerAuth()
   @AllowAuthenticated()
-  @Delete(':id')
-  async remove(@Param('id') uid: string, @GetUser() user: GetUserType) {
+  @Delete(':uid')
+  async remove(@Param('uid') uid: string, @GetUser() user: GetUserType) {
     const admin = await this.prisma.admin.findUnique({ where: { uid } })
     checkRowLevelPermission(user, admin.uid)
     return this.prisma.admin.delete({ where: { uid } })

@@ -33,11 +33,18 @@ export class AddressesController {
   @ApiBearerAuth()
   @ApiCreatedResponse({ type: AddressEntity })
   @Post()
-  create(
+  async create(
     @Body() createAddressDto: CreateAddress,
     @GetUser() user: GetUserType,
   ) {
-    checkRowLevelPermission(user, createAddressDto.id.toString())
+    const garage = await this.prisma.garage.findUnique({
+      where: { id: createAddressDto.garageId },
+      include: { Company: { include: { Managers: true } } },
+    })
+    checkRowLevelPermission(
+      user,
+      garage.Company.Managers.map((manager) => manager.uid),
+    )
     return this.prisma.address.create({ data: createAddressDto })
   }
 
@@ -66,8 +73,16 @@ export class AddressesController {
     @Body() updateAddressDto: UpdateAddress,
     @GetUser() user: GetUserType,
   ) {
-    const address = await this.prisma.address.findUnique({ where: { id } })
-    checkRowLevelPermission(user, address.id.toString())
+    const address = await this.prisma.address.findUnique({
+      where: { id },
+      include: {
+        Garage: { include: { Company: { include: { Managers: true } } } },
+      },
+    })
+    checkRowLevelPermission(
+      user,
+      address.Garage.Company.Managers.map((manager) => manager.uid),
+    )
     return this.prisma.address.update({
       where: { id },
       data: updateAddressDto,
@@ -78,8 +93,16 @@ export class AddressesController {
   @AllowAuthenticated()
   @Delete(':id')
   async remove(@Param('id') id: number, @GetUser() user: GetUserType) {
-    const address = await this.prisma.address.findUnique({ where: { id } })
-    checkRowLevelPermission(user, address.id.toString())
+    const address = await this.prisma.address.findUnique({
+      where: { id },
+      include: {
+        Garage: { include: { Company: { include: { Managers: true } } } },
+      },
+    })
+    checkRowLevelPermission(
+      user,
+      address.Garage.Company.Managers.map((manager) => manager.uid),
+    )
     return this.prisma.address.delete({ where: { id } })
   }
 }

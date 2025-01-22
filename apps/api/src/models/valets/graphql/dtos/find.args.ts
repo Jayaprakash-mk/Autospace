@@ -16,7 +16,6 @@ class FindManyValetArgsStrict
       Omit<Prisma.ValetFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => ValetWhereInput, { nullable: true })
   where: ValetWhereInput
   orderBy: ValetOrderByWithRelationInput[]
   cursor: ValetWhereUniqueInput

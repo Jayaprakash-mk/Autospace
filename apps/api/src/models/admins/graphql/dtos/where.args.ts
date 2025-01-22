@@ -6,6 +6,7 @@ import {
   StringFilter,
 } from 'src/common/dtos/common.input'
 import { UserRelationFilter } from 'src/models/users/graphql/dtos/where.args'
+import { VerificationListRelationFilter } from 'src/models/verifications/graphql/dtos/where.args'
 
 @InputType()
 export class AdminWhereUniqueInput {
@@ -16,7 +17,7 @@ export class AdminWhereUniqueInput {
 export class AdminWhereInputStrict
   implements RestrictProperties<AdminWhereInputStrict, Prisma.AdminWhereInput>
 {
-  Verifications: AdminListRelationFilter
+  Verifications: VerificationListRelationFilter
   uid: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter

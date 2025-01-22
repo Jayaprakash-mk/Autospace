@@ -1,9 +1,7 @@
-import { PickType } from '@nestjs/swagger'
+import { OmitType } from '@nestjs/swagger'
 import { VerificationEntity } from '../entity/verification.entity'
 
-export class CreateVerification extends PickType(VerificationEntity, [
+export class CreateVerification extends OmitType(VerificationEntity, [
   'createdAt',
   'updatedAt',
-  'garageId',
-  'adminId',
 ]) {}

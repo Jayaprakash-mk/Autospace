@@ -16,9 +16,7 @@ class FindManyGarageArgsStrict
       Omit<Prisma.GarageFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => GarageWhereInput, { nullable: true })
-  where: Prisma.GarageWhereInput
-
+  where: GarageWhereInput
   orderBy: GarageOrderByWithRelationInput[]
   cursor: GarageWhereUniqueInput
   take: number

@@ -16,9 +16,7 @@ class FindManySlotArgsStrict
       Omit<Prisma.SlotFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => SlotWhereInput, { nullable: true })
-  where: Prisma.SlotWhereInput
-
+  where: SlotWhereInput
   orderBy: SlotOrderByWithRelationInput[]
   cursor: SlotWhereUniqueInput
   take: number

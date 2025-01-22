@@ -16,8 +16,7 @@ class FindManyAdminArgsStrict
       Omit<Prisma.AdminFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => AdminWhereInput, { nullable: true })
-  where: Prisma.AdminWhereInput
+  where: AdminWhereInput
   orderBy: AdminOrderByWithRelationInput[]
   cursor: AdminWhereUniqueInput
   take: number

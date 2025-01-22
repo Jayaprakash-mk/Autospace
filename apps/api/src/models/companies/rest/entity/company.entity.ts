@@ -8,10 +8,8 @@ export class CompanyEntity
   id: number
   createdAt: Date
   updatedAt: Date
-
   @IsOptional()
   displayName: string
-
   @IsOptional()
   description: string
 }

@@ -1,9 +1,16 @@
-import { InputType, PickType } from '@nestjs/graphql'
+import { InputType, OmitType, PickType } from '@nestjs/graphql'
 import { Address } from '../entity/address.entity'
 
 @InputType()
-export class CreateAddressInput extends PickType(
+export class CreateAddressInput extends OmitType(
   Address,
-  ['id', 'createdAt', 'updatedAt', 'address', 'lat', 'lng', 'garageId'],
+  ['createdAt', 'updatedAt', 'id'],
+  InputType,
+) {}
+
+@InputType()
+export class CreateAddressInputWithoutGarageId extends PickType(
+  CreateAddressInput,
+  ['address', 'lat', 'lng'],
   InputType,
 ) {}

@@ -30,8 +30,6 @@ export class VerificationWhereInputStrict
   garageId: IntFilter
   Admin: AdminRelationFilter
   Garage: GarageRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: VerificationWhereInput[]
   OR: VerificationWhereInput[]

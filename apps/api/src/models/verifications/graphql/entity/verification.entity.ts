@@ -8,11 +8,9 @@ export class Verification
 {
   @Field()
   createdAt: Date
-
   updatedAt: Date
   verified: boolean
   adminId: string
-
   @Field()
   garageId: number
   // Todo Add below to make optional fields optional.

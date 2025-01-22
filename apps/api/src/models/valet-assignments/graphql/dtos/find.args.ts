@@ -19,9 +19,7 @@ class FindManyValetAssignmentArgsStrict
       Omit<Prisma.ValetAssignmentFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => ValetAssignmentWhereInput, { nullable: true })
   where: ValetAssignmentWhereInput
-
   orderBy: ValetAssignmentOrderByWithRelationInput[]
   cursor: ValetAssignmentWhereUniqueInput
   take: number

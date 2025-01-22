@@ -7,8 +7,8 @@ import {
   RestrictProperties,
   StringFilter,
 } from 'src/common/dtos/common.input'
+import { BookingTimelineListRelationFilter } from 'src/models/booking-timelines/graphql/dtos/where.args'
 import { CustomerRelationFilter } from 'src/models/customers/graphql/dtos/where.args'
-import { ServiceAssignmentListRelationFilter } from 'src/models/service-assignments/graphql/dtos/where.args'
 import { SlotRelationFilter } from 'src/models/slots/graphql/dtos/where.args'
 import { ValetAssignmentRelationFilter } from 'src/models/valet-assignments/graphql/dtos/where.args'
 
@@ -44,16 +44,14 @@ export class BookingWhereInputStrict
   vehicleNumber: StringFilter
   phoneNumber: StringFilter
   passcode: StringFilter
+
   status: EnumBookingStatusFilter
   slotId: IntFilter
   customerId: StringFilter
   ValetAssignment: ValetAssignmentRelationFilter
-  ServiceAssignment: ServiceAssignmentListRelationFilter
   Customer: CustomerRelationFilter
   Slot: SlotRelationFilter
-  BookingTimeline: BookingListRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
+  BookingTimeline: BookingTimelineListRelationFilter
 
   AND: BookingWhereInput[]
   OR: BookingWhereInput[]

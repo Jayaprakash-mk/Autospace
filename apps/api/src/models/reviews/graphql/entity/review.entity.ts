@@ -8,10 +8,8 @@ export class Review implements RestrictProperties<Review, ReviewType> {
   createdAt: Date
   updatedAt: Date
   rating: number
-
   @Field({ nullable: true })
   comment: string
-
   customerId: string
   garageId: number
   // Todo Add below to make optional fields optional.

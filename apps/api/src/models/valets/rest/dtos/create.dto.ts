@@ -1,9 +1,7 @@
-import { PickType } from '@nestjs/swagger'
+import { OmitType } from '@nestjs/swagger'
 import { ValetEntity } from '../entity/valet.entity'
 
-export class CreateValet extends PickType(ValetEntity, [
+export class CreateValet extends OmitType(ValetEntity, [
   'createdAt',
   'updatedAt',
-  'uid',
-  'displayName',
 ]) {}

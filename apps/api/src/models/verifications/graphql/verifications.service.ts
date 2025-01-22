@@ -6,21 +6,18 @@ import {
 import { PrismaService } from 'src/common/prisma/prisma.service'
 import { CreateVerificationInput } from './dtos/create-verification.input'
 import { UpdateVerificationInput } from './dtos/update-verification.input'
-import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class VerificationsService {
   constructor(private readonly prisma: PrismaService) {}
-  create(createVerificationInput: CreateVerificationInput) {
+  create(createVerificationInput: CreateVerificationInput, adminId: string) {
     return this.prisma.verification.create({
-      data: createVerificationInput,
+      data: { ...createVerificationInput, adminId },
     })
   }
 
   findAll(args: FindManyVerificationArgs) {
-    return this.prisma.verification.findMany(
-      args as Prisma.VerificationFindManyArgs,
-    )
+    return this.prisma.verification.findMany(args)
   }
 
   findOne(args: FindUniqueVerificationArgs) {

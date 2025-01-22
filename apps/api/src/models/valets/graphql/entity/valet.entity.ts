@@ -8,12 +8,9 @@ export class Valet implements RestrictProperties<Valet, ValetType> {
   createdAt: Date
   updatedAt: Date
   displayName: string
-
   @Field({ nullable: true })
   image: string
-
   licenceID: string
-
   @Field({ nullable: true })
   companyId: number
   // Todo Add below to make optional fields optional.

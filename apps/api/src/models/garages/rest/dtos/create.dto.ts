@@ -1,9 +1,8 @@
-import { PickType } from '@nestjs/swagger'
+import { OmitType } from '@nestjs/swagger'
 import { GarageEntity } from '../entity/garage.entity'
 
-export class CreateGarage extends PickType(GarageEntity, [
+export class CreateGarage extends OmitType(GarageEntity, [
   'createdAt',
   'updatedAt',
   'id',
-  'companyId',
 ]) {}

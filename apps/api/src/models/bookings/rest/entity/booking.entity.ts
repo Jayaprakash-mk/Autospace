@@ -8,23 +8,17 @@ export class BookingEntity
   id: number
   createdAt: Date
   updatedAt: Date
-
   @IsOptional()
   pricePerHour: number
-
   @IsOptional()
   totalPrice: number
-
   startTime: Date
   endTime: Date
   vehicleNumber: string
-
   @IsOptional()
   phoneNumber: string
-
   @IsOptional()
   passcode: string
-
   status: $Enums.BookingStatus
   slotId: number
   customerId: string

@@ -16,8 +16,7 @@ class FindManyManagerArgsStrict
       Omit<Prisma.ManagerFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => ManagerWhereInput, { nullable: true })
-  where: Prisma.ManagerWhereInput
+  where: ManagerWhereInput
   orderBy: ManagerOrderByWithRelationInput[]
   cursor: ManagerWhereUniqueInput
   take: number

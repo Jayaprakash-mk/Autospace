@@ -1,8 +1,7 @@
-import { PickType } from '@nestjs/swagger'
+import { OmitType } from '@nestjs/swagger'
 import { AdminEntity } from '../entity/admin.entity'
 
-export class CreateAdmin extends PickType(AdminEntity, [
+export class CreateAdmin extends OmitType(AdminEntity, [
   'createdAt',
   'updatedAt',
-  'uid',
 ]) {}

@@ -9,11 +9,11 @@ import { User } from '../entity/user.entity'
 import { AuthProviderType } from '@prisma/client'
 
 registerEnumType(AuthProviderType, {
-  name: 'AuthProvicerType',
+  name: 'AuthProviderType',
 })
 
 @InputType()
-export class RegisterWithProvidedInput extends PickType(
+export class RegisterWithProviderInput extends PickType(
   User,
   ['uid', 'name', 'image'],
   InputType,
@@ -23,11 +23,13 @@ export class RegisterWithProvidedInput extends PickType(
 }
 
 @InputType()
-export class RegisterWithCredentialsInput {
-  name: string
+export class RegisterWithCredentialsInput extends PickType(
+  User,
+  ['name', 'image'],
+  InputType,
+) {
   email: string
   password: string
-  image?: string
 }
 
 @InputType()
@@ -39,4 +41,5 @@ export class LoginInput extends PickType(RegisterWithCredentialsInput, [
 @ObjectType()
 export class LoginOutput {
   token: string
+  user: User
 }

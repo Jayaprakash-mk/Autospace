@@ -11,16 +11,12 @@ export class ValetAssignment
   updatedAt: Date
   pickupLat: number
   pickupLng: number
-
   @Field({ nullable: true })
   returnLat: number
-
   @Field({ nullable: true })
   returnLng: number
-
   @Field({ nullable: true })
   pickupValetId: string
-
   @Field({ nullable: true })
   returnValetId: string
   // Todo Add below to make optional fields optional.

@@ -16,8 +16,7 @@ class FindManyCompanyArgsStrict
       Omit<Prisma.CompanyFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => CompanyWhereInput, { nullable: true })
-  where: Prisma.CompanyWhereInput
+  where: CompanyWhereInput
   orderBy: CompanyOrderByWithRelationInput[]
   cursor: CompanyWhereUniqueInput
   take: number

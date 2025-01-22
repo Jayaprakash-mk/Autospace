@@ -19,7 +19,6 @@ class FindManyVerificationArgsStrict
       Omit<Prisma.VerificationFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => VerificationWhereInput, { nullable: true })
   where: VerificationWhereInput
   orderBy: VerificationOrderByWithRelationInput[]
   cursor: VerificationWhereUniqueInput

@@ -7,7 +7,6 @@ import {
 } from 'src/common/dtos/common.input'
 import { CustomerRelationFilter } from 'src/models/customers/graphql/dtos/where.args'
 import { ManagerRelationFilter } from 'src/models/managers/graphql/dtos/where.args'
-import { ServiceRelationFilter } from 'src/models/services/graphql/dtos/where.args'
 import { ValetRelationFilter } from 'src/models/valets/graphql/dtos/where.args'
 
 @InputType()
@@ -29,14 +28,10 @@ export class UserWhereInputStrict
   Customer: CustomerRelationFilter
   Manager: ManagerRelationFilter
   Valet: ValetRelationFilter
-  Service: ServiceRelationFilter
   uid: StringFilter
   createdAt: DateTimeFilter
   updatedAt: DateTimeFilter
   name: StringFilter
-
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: UserWhereInput[]
   OR: UserWhereInput[]

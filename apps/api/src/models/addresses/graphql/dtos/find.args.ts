@@ -16,8 +16,7 @@ class FindManyAddressArgsStrict
       Omit<Prisma.AddressFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => AddressWhereInput, { nullable: true })
-  where: Prisma.AddressWhereInput
+  where: AddressWhereInput
   orderBy: AddressOrderByWithRelationInput[]
   cursor: AddressWhereUniqueInput
   take: number

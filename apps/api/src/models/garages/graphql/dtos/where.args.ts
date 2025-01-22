@@ -34,8 +34,6 @@ export class GarageWhereInputStrict
   Verification: VerificationRelationFilter
   Reviews: ReviewListRelationFilter
   Slots: SlotListRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: GarageWhereInput[]
   OR: GarageWhereInput[]

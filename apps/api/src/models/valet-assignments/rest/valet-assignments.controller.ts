@@ -19,10 +19,10 @@ import {
   ApiCreatedResponse,
   ApiOkResponse,
 } from '@nestjs/swagger'
-import { ValetAssignmentEntity } from './entity/valet-assignment.entity'
 import { AllowAuthenticated, GetUser } from 'src/common/auth/auth.decorator'
 import { GetUserType } from 'src/common/types'
 import { checkRowLevelPermission } from 'src/common/auth/util'
+import { ValetAssignmentEntity } from './entity/valet-assignment.entity'
 
 @ApiTags('valet-assignments')
 @Controller('valet-assignments')
@@ -37,7 +37,10 @@ export class ValetAssignmentsController {
     @Body() createValetAssignmentDto: CreateValetAssignment,
     @GetUser() user: GetUserType,
   ) {
-    checkRowLevelPermission(user, createValetAssignmentDto.bookingId.toString())
+    checkRowLevelPermission(user, [
+      createValetAssignmentDto.pickupValetId,
+      createValetAssignmentDto.returnValetId,
+    ])
     return this.prisma.valetAssignment.create({
       data: createValetAssignmentDto,
     })
@@ -71,7 +74,10 @@ export class ValetAssignmentsController {
     const valetAssignment = await this.prisma.valetAssignment.findUnique({
       where: { bookingId },
     })
-    checkRowLevelPermission(user, valetAssignment.bookingId.toString())
+    checkRowLevelPermission(user, [
+      valetAssignment.pickupValetId,
+      valetAssignment.returnValetId,
+    ])
     return this.prisma.valetAssignment.update({
       where: { bookingId },
       data: updateValetAssignmentDto,
@@ -88,7 +94,10 @@ export class ValetAssignmentsController {
     const valetAssignment = await this.prisma.valetAssignment.findUnique({
       where: { bookingId },
     })
-    checkRowLevelPermission(user, valetAssignment.bookingId.toString())
+    checkRowLevelPermission(user, [
+      valetAssignment.pickupValetId,
+      valetAssignment.returnValetId,
+    ])
     return this.prisma.valetAssignment.delete({ where: { bookingId } })
   }
 }

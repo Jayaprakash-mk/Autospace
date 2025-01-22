@@ -8,7 +8,6 @@ import {
 } from 'src/common/dtos/common.input'
 import { GarageListRelationFilter } from 'src/models/garages/graphql/dtos/where.args'
 import { ManagerListRelationFilter } from 'src/models/managers/graphql/dtos/where.args'
-import { ServiceListRelationFilter } from 'src/models/services/graphql/dtos/where.args'
 import { ValetListRelationFilter } from 'src/models/valets/graphql/dtos/where.args'
 
 @InputType()
@@ -29,9 +28,6 @@ export class CompanyWhereInputStrict
   Garages: GarageListRelationFilter
   Managers: ManagerListRelationFilter
   Valets: ValetListRelationFilter
-  Service: ServiceListRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: CompanyWhereInput[]
   OR: CompanyWhereInput[]

@@ -7,12 +7,9 @@ export class ValetEntity implements RestrictProperties<ValetEntity, Valet> {
   createdAt: Date
   updatedAt: Date
   displayName: string
-
   @IsOptional()
   image: string
-
   licenceID: string
-
   @IsOptional()
   companyId: number
 }

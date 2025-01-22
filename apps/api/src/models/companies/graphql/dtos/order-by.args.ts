@@ -3,7 +3,6 @@ import { Prisma } from '@prisma/client'
 import { RestrictProperties } from 'src/common/dtos/common.input'
 import { GarageOrderByRelationAggregateInput } from 'src/models/garages/graphql/dtos/order-by.args'
 import { ManagerOrderByRelationAggregateInput } from 'src/models/managers/graphql/dtos/order-by.args'
-import { ServiceOrderByRelationAggregateInput } from 'src/models/services/graphql/dtos/order-by.args'
 import { ValetOrderByRelationAggregateInput } from 'src/models/valets/graphql/dtos/order-by.args'
 
 @InputType()
@@ -27,7 +26,6 @@ export class CompanyOrderByWithRelationInputStrict
   Garages: GarageOrderByRelationAggregateInput
   Managers: ManagerOrderByRelationAggregateInput
   Valets: ValetOrderByRelationAggregateInput
-  Service: ServiceOrderByRelationAggregateInput
   // Todo: Add below field decorator to the SortOrder properties.
   // @Field(() => Prisma.SortOrder)
 }

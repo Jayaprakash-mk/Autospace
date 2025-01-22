@@ -35,8 +35,6 @@ export class ValetAssignmentWhereInputStrict
   PickupValet: ValetRelationFilter
   ReturnValet: ValetRelationFilter
   Booking: BookingRelationFilter
-  // Todo: Add the below field decorator only to the $Enums types.
-  // @Field(() => $Enums.x)
 
   AND: ValetAssignmentWhereInput[]
   OR: ValetAssignmentWhereInput[]

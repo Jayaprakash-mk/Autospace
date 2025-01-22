@@ -16,8 +16,7 @@ class FindManyBookingArgsStrict
       Omit<Prisma.BookingFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => BookingWhereInput, { nullable: true })
-  where: Prisma.BookingWhereInput
+  where: BookingWhereInput
   orderBy: BookingOrderByWithRelationInput[]
   cursor: BookingWhereUniqueInput
   take: number

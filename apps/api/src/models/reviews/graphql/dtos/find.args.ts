@@ -16,9 +16,7 @@ class FindManyReviewArgsStrict
       Omit<Prisma.ReviewFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => ReviewWhereInput, { nullable: true })
-  where: Prisma.ReviewWhereInput
-
+  where: ReviewWhereInput
   orderBy: ReviewOrderByWithRelationInput[]
   cursor: ReviewWhereUniqueInput
   take: number

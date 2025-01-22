@@ -6,7 +6,6 @@ import {
 import { PrismaService } from 'src/common/prisma/prisma.service'
 import { CreateValetAssignmentInput } from './dtos/create-valet-assignment.input'
 import { UpdateValetAssignmentInput } from './dtos/update-valet-assignment.input'
-import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class ValetAssignmentsService {
@@ -18,11 +17,7 @@ export class ValetAssignmentsService {
   }
 
   findAll(args: FindManyValetAssignmentArgs) {
-    // return this.prisma.valetAssignment.findMany(args)
-    // change this later
-    return this.prisma.valetAssignment.findMany(
-      args as Prisma.ValetAssignmentFindManyArgs,
-    )
+    return this.prisma.valetAssignment.findMany(args)
   }
 
   findOne(args: FindUniqueValetAssignmentArgs) {

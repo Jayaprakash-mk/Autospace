@@ -7,10 +7,8 @@ export class ReviewEntity implements RestrictProperties<ReviewEntity, Review> {
   createdAt: Date
   updatedAt: Date
   rating: number
-
   @IsOptional()
   comment: string
-
   customerId: string
   garageId: number
 }

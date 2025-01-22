@@ -7,10 +7,9 @@ import {
 } from './dtos/find.args'
 import { CreateVerificationInput } from './dtos/create-verification.input'
 import { UpdateVerificationInput } from './dtos/update-verification.input'
-import { checkRowLevelPermission } from 'src/common/auth/util'
-import { GetUserType } from 'src/common/types'
 import { AllowAuthenticated, GetUser } from 'src/common/auth/auth.decorator'
 import { PrismaService } from 'src/common/prisma/prisma.service'
+import { GetUserType } from 'src/common/types'
 
 @Resolver(() => Verification)
 export class VerificationsResolver {
@@ -19,14 +18,13 @@ export class VerificationsResolver {
     private readonly prisma: PrismaService,
   ) {}
 
-  @AllowAuthenticated()
+  @AllowAuthenticated('admin')
   @Mutation(() => Verification)
   createVerification(
     @Args('createVerificationInput') args: CreateVerificationInput,
     @GetUser() user: GetUserType,
   ) {
-    checkRowLevelPermission(user, args.adminId)
-    return this.verificationsService.create(args)
+    return this.verificationsService.create(args, user.uid)
   }
 
   @Query(() => [Verification], { name: 'verifications' })
@@ -39,27 +37,17 @@ export class VerificationsResolver {
     return this.verificationsService.findOne(args)
   }
 
-  @AllowAuthenticated()
+  @AllowAuthenticated('admin')
   @Mutation(() => Verification)
   async updateVerification(
     @Args('updateVerificationInput') args: UpdateVerificationInput,
-    @GetUser() user: GetUserType,
   ) {
-    const verification = await this.prisma.verification.findUnique({
-      where: { garageId: args.garageId },
-    })
-    checkRowLevelPermission(user, verification.adminId)
     return this.verificationsService.update(args)
   }
 
-  @AllowAuthenticated()
+  @AllowAuthenticated('admin')
   @Mutation(() => Verification)
-  async removeVerification(
-    @Args() args: FindUniqueVerificationArgs,
-    @GetUser() user: GetUserType,
-  ) {
-    const verification = await this.prisma.verification.findUnique(args)
-    checkRowLevelPermission(user, verification.adminId)
+  async removeVerification(@Args() args: FindUniqueVerificationArgs) {
     return this.verificationsService.remove(args)
   }
 }

@@ -1,9 +1,9 @@
-import { InputType, PickType } from '@nestjs/graphql'
+import { InputType, OmitType } from '@nestjs/graphql'
 import { Valet } from '../entity/valet.entity'
 
 @InputType()
-export class CreateValetInput extends PickType(
+export class CreateValetInput extends OmitType(
   Valet,
-  ['createdAt', 'updatedAt', 'displayName', 'uid'],
+  ['createdAt', 'updatedAt'],
   InputType,
 ) {}

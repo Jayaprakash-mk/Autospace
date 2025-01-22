@@ -16,9 +16,7 @@ class FindManyCustomerArgsStrict
       Omit<Prisma.CustomerFindManyArgs, 'include' | 'select' | 'omit'>
     >
 {
-  @Field(() => CustomerWhereInput, { nullable: true })
-  where: Prisma.CustomerWhereInput
-
+  where: CustomerWhereInput
   orderBy: CustomerOrderByWithRelationInput[]
   cursor: CustomerWhereUniqueInput
   take: number
