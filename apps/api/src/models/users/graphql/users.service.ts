@@ -9,7 +9,7 @@ import {
   LoginInput,
   LoginOutput,
   RegisterWithCredentialsInput,
-  RegisterWithProvidedInput,
+  RegisterWithProviderInput,
 } from './dtos/create-user.input'
 import { UpdateUserInput } from './dtos/update-user.input'
 import * as bcrypt from 'bcryptjs'
@@ -22,7 +22,7 @@ export class UsersService {
     private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
   ) {}
-  registerWithProvider({ image, name, uid, type }: RegisterWithProvidedInput) {
+  registerWithProvider({ image, name, uid, type }: RegisterWithProviderInput) {
     return this.prisma.user.create({
       data: {
         uid,
@@ -44,17 +44,17 @@ export class UsersService {
     image,
   }: RegisterWithCredentialsInput) {
     const existingUser = await this.prisma.credentials.findUnique({
-      where: {
-        email,
-      },
+      where: { email },
     })
 
     if (existingUser) {
-      throw new BadRequestException('User Already exists with this email')
+      throw new BadRequestException('User already exists with this email.')
     }
 
+    // Hash the password
     const salt = bcrypt.genSaltSync()
     const passwordHash = bcrypt.hashSync(password, salt)
+
     const uid = uuid()
 
     return this.prisma.user.create({
@@ -109,7 +109,8 @@ export class UsersService {
         algorithm: 'HS256',
       },
     )
-    return { token: jwtToken }
+
+    return { token: jwtToken, user }
   }
 
   findAll(args: FindManyUserArgs) {
