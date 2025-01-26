@@ -91,7 +91,7 @@ export class UsersService {
     })
 
     if (!user) {
-      throw new UnauthorizedException('Invalid email or password.')
+      throw new UnauthorizedException('Invalid email.')
     }
 
     const isPasswordValid = bcrypt.compareSync(
@@ -100,7 +100,7 @@ export class UsersService {
     )
 
     if (!isPasswordValid) {
-      throw new UnauthorizedException('Invalid email or password.')
+      throw new UnauthorizedException('Invalid password.')
     }
 
     const jwtToken = this.jwtService.sign(
