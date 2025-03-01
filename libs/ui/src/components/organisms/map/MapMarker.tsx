@@ -1,6 +1,6 @@
-// import React from 'react'
-// import { Marker as MarkerGl, MarkerProps } from 'react-map-gl'
+import React from 'react'
+import { Marker as MarkerGl, MarkerProps } from 'react-map-gl/mapbox'
 
-// export const Marker = (props: MarkerProps) => {
-//   return <MarkerGl {...props} />
-// }
+export const Marker = (props: MarkerProps) => {
+  return <MarkerGl {...props} />
+}
