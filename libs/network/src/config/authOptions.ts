@@ -40,6 +40,7 @@ export const authOptions: NextAuthOptions = {
       // Authorize function to validate user credentials
       async authorize(credentials) {
         // Implement credential validation logic
+        console.log('Received Credentials', credentials)
         if (!credentials) {
           throw new Error('Email and password are required')
         }

@@ -8,9 +8,9 @@ services:
     ports:
       - 2010:5432
     environment:
-      POSTGRES_USER: autoSpace
+      POSTGRES_USER: autospace
       POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: autoSpace
+      POSTGRES_PASSWORD: root@123
     volumes:
       - db_data_autospace:/var/lib/postgresql/data
     
