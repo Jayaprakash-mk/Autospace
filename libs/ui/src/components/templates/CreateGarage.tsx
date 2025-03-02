@@ -69,19 +69,19 @@ const CreateGarageContent = () => {
               location,
               slotTypes,
             }) => {
-                const uploadedImages = await upload(images)
-                const result = await createGarage({
-                  variables: {
-                    createGarageInput: {
-                      Address: location,
-                      images: uploadedImages,
-                      Slots: slotTypes,
-                      description,
-                      displayName,
-                    },
+              const uploadedImages = await upload(images)
+              const result = await createGarage({
+                variables: {
+                  createGarageInput: {
+                    Address: location,
+                    images: uploadedImages,
+                    Slots: slotTypes,
+                    description,
+                    displayName,
                   },
-                })
-                console.log("response: ", result)
+                },
+              })
+              console.log('response: ', result)
             },
           )}
         >
