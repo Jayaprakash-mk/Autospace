@@ -1,4 +1,4 @@
-import {format} from 'date-fns'
+import { format } from 'date-fns'
 import pluralize from 'pluralize'
 
 export const toLocalISOString = (date: Date): string => {
