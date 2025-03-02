@@ -7,6 +7,7 @@ export const UserInfo = ({ children, className }: BaseComponent) => {
   const session = useSession()
   const image = session.data?.user?.image
   const name = session.data?.user?.name
+  const email = session.data?.user?.email
   //   const uid = session.data?.user?.uid
   return (
     <div className={`flex gap-2 ${className}`}>
@@ -19,7 +20,7 @@ export const UserInfo = ({ children, className }: BaseComponent) => {
       />
       <div>
         <div>{name}</div>
-        {/* <div className="text-sm text-gray">{uid}</div> */}
+        <div className="text-sm text-gray">{email}</div>
       </div>
       {children}
     </div>
