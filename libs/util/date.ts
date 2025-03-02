@@ -1,5 +1,5 @@
-import { format } from 'date-fns'
-import pluralize = require('pluralize')
+import {format} from 'date-fns'
+import pluralize from 'pluralize'
 
 export const toLocalISOString = (date: Date): string => {
   const tzoffset = date.getTimezoneOffset() * 60000 // offset in milliseconds

@@ -250,7 +250,6 @@ export const createBookingSession = async (
     const checkoutSession = await response.json()
 
     const publishableKey = process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
-
     const stripe = await loadStripe(publishableKey || '')
     const result = await stripe?.redirectToCheckout({
       sessionId: checkoutSession.sessionId,
