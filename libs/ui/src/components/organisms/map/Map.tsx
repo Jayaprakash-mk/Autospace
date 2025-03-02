@@ -26,7 +26,7 @@ export const StyleMap = () => {
     current?.getMap().setFog({
       color: 'rgb(255, 255, 255)', // Lower atmosphere
       range: [1, 10],
-      //   @ts-ignore
+      //   @ts-expect-ignore
       'high-color': 'rgb(200, 200, 200)', // Upper atmosphere
       'horizon-blend': 0.05, // Atmosphere thickness (default 0.2 at low zooms)
       'space-color': 'rgb(150, 150, 150)', // Background color

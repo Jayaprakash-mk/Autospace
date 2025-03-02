@@ -12,8 +12,8 @@ import { Sidebar } from '@autospace/ui/src/components/organisms/Sidebar'
 import Link from 'next/link'
 
 export default function Home() {
-  const { data, loading } = useQuery(CompaniesDocument)
-  const { data: sessionData, status } = useSession()
+  const { data } = useQuery(CompaniesDocument)
+  const { data: sessionData } = useSession()
 
   const { data: garages } = useQuery(SearchGaragesDocument, {
     variables: {
