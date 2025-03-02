@@ -31,11 +31,11 @@ export class GaragesService {
           images,
         },
       })
-      // const slotsByType = this.groupSlotsByType(Slots, createdGarage.id)
+      const slotsByType = this.groupSlotsByType(Slots, createdGarage.id)
 
-      // const createSlots = await tx.slot.createMany({
-      //   data: slotsByType,
-      // })
+      const createSlots = await tx.slot.createMany({
+        data: slotsByType,
+      })
 
       return createdGarage
     })

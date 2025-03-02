@@ -20,7 +20,10 @@ export type IHeaderProps = {
 
 export const Header = ({ type, menuItems }: IHeaderProps) => {
   const session = useSession()
+  console.log('Session data: ', session)
+  console.log('user data: ', session?.data)
   const uid = session?.data?.user?.uid
+
   //   let [open, setOpen] = useDialogState(false)
 
   return (

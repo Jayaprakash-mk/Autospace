@@ -5,6 +5,7 @@ import { IconMinus, IconParking, IconPlus } from '@tabler/icons-react'
 import { useMap } from 'react-map-gl/mapbox'
 import React from 'react'
 
+// eslint-disable-next-line
 export interface IZoomControlsProps {}
 
 const MapControls = ({ children }: { children: ReactNode }) => (
