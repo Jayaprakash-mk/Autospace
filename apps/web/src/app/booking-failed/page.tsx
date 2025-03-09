@@ -1,3 +1,3 @@
 export default function Page() {
-    return <div>Booking failed.</div>
-  }
+  return <div>Booking failed.</div>
+}

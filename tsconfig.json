@@ -3,6 +3,7 @@
       "target": "ESNext",
       "jsx": "react-jsx",
       "module": "CommonJS",
+      "esModuleInterop": true,
       "strict": true
     },
     "exclude": ["node_modules"]
