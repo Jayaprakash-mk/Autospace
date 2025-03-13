@@ -46,8 +46,7 @@ export class BookingsResolver {
     return this.bookingsService.findAll(args)
   }
 
-  //@AllowAuthenticated('valet') this need to be changed
-  @AllowAuthenticated()
+  @AllowAuthenticated('valet')
   @Query(() => [Booking], { name: 'bookingsForValet' })
   async bookingsForValet(
     @Args() args: FindManyBookingArgs,

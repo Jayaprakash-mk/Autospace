@@ -29,7 +29,7 @@ export default class StripeService {
             product_data: {
               name: toTitleCase(name),
             },
-            currency: 'usd',
+            currency: 'inr',
             unit_amount: price * 100,
           },
         })),

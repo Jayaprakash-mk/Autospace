@@ -28,14 +28,13 @@ export const LoginForm = ({}: ILoginFormProps) => {
       onSubmit={handleSubmit(async (data) => {
         const { email, password } = data
         setLoading(true)
-        console.log('logging in', email, password)
         const result = await signIn('credentials', {
           email,
           password,
           redirect: false,
         })
         setLoading(false)
-
+        console.log("login result: ", result)
         if (result?.ok) {
           replace('/')
         }
