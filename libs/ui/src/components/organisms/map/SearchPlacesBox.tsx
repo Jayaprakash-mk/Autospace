@@ -29,7 +29,7 @@ export const SearchPlaceBox = ({
       loading={loading}
       onChange={async (_, v) => {
         if (v) {
-          const { latLng, placeName } = v
+          const { latLng } = v
           await map?.flyTo({
             center: { lat: latLng[0], lng: latLng[1] },
             zoom: 12,

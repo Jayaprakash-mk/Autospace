@@ -3,6 +3,7 @@ import { useMap } from 'react-map-gl/mapbox'
 import { Button } from '../../atoms/Button'
 import React from 'react'
 
+// eslint-disable-next-line
 export interface ICurrentLocationButtonProps {}
 
 export const CurrentLocationButton = () => {
