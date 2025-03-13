@@ -8,7 +8,7 @@ import {} from '@autospace/network/src/gql/generated'
 import { ShowData } from './ShowData'
 import { IconPlus } from '@tabler/icons-react'
 import Link from 'next/link'
-//import { GarageCard } from './GarageCard'
+import { GarageCard } from './GarageCard'
 
 export const ListGarages = ({
   companyId,
@@ -49,9 +49,9 @@ export const ListGarages = ({
       }
     >
       <></>
-      {/* {data?.garages.map((garage) => (
-          <GarageCard key={garage.id} garage={garage} />
-        ))} */}
+      {data?.garages.map((garage) => (
+        <GarageCard key={garage.id} garage={garage} />
+      ))}
     </ShowData>
   )
 }
