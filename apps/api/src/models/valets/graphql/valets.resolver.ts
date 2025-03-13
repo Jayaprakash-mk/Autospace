@@ -69,7 +69,7 @@ export class ValetsResolver {
       ...booking.Slot.Garage.Company.Valets.map((valet) => valet.uid),
     ])
 
-    const [updatedBooking] = await this.prisma.$transaction([
+    const [updatedBooking, bookingTimeline] = await this.prisma.$transaction([
       this.prisma.booking.update({
         where: { id: bookingId },
         data: {
@@ -139,8 +139,7 @@ export class ValetsResolver {
     return this.valetsService.findOne({ where: { uid: user.uid } })
   }
 
-  //@AllowAuthenticated('valet') -> this need to be changed later
-  @AllowAuthenticated()
+  @AllowAuthenticated('valet')
   @Query(() => [Booking], { name: 'valetPickups' })
   async valetPickups(
     @Args() { skip, take }: PaginationInput,
