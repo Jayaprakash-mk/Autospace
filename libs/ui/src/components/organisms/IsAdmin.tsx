@@ -12,8 +12,8 @@ export const IsAdmin = ({ children }: { children: ReactNode }) => {
   if (loading) {
     return <LoaderPanel text="Loading company..." />
   }
-  console.log("type: ", data?.adminMe?.__typename)
-  console.log("uid: ", data?.adminMe?.uid)
+  console.log('type: ', data?.adminMe?.__typename)
+  console.log('uid: ', data?.adminMe?.uid)
   if (!data?.adminMe?.uid)
     return (
       <AlertSection>

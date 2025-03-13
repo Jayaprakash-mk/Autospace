@@ -14,7 +14,7 @@ export default {
     colors: colorsConfig,
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
+        sans: ['Inter', 'sans-serif'],
       },
       ringColor: {
         DEFAULT: colorsConfig.primary.DEFAULT,

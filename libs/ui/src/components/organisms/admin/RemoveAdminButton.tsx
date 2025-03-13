@@ -28,8 +28,7 @@ export const RemoveAdminButton = ({ uid }: { uid: string }) => {
       </Button>
       <Dialog open={open} setOpen={setOpen} title={'Delete'}>
         <div>
-          Are you sure you want to delete this user from the admin
-          realm?
+          Are you sure you want to delete this user from the admin realm?
         </div>
         <div className="my-2 text-xs text-gray">{uid}</div>
         <div className="grid w-full grid-cols-2 gap-2 mt-4">

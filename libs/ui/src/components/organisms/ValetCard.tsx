@@ -14,7 +14,9 @@ export const ValetCard = ({ valet }: IValetCardProps) => {
           className="object-cover w-full aspect-square "
           width={200}
           height={300}
-          src={'https://res.cloudinary.com/dzpmsojcs/image/upload/v1741810564/valet_tphemj.jpg'}
+          src={
+            'https://res.cloudinary.com/dzpmsojcs/image/upload/v1741810564/valet_tphemj.jpg'
+          }
           alt={''}
         />
       </div>

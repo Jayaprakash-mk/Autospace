@@ -34,7 +34,7 @@ export const LoginForm = ({}: ILoginFormProps) => {
           redirect: false,
         })
         setLoading(false)
-        console.log("login result: ", result)
+        console.log('login result: ', result)
         if (result?.ok) {
           replace('/')
         }
