@@ -1,4 +1,4 @@
 export type SpawnedElement = {
-    id: number
-    progress: number
-  }
+  id: number
+  progress: number
+}
